@@ -1,0 +1,6 @@
+node_modules/
+site/dist/
+site/node_modules/
+data/*.json
+!.gitkeep
+.DS_Store
