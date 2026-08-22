@@ -120,14 +120,16 @@
 .footer {
   margin-top: 2.75rem;
   padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem 0.65rem;
+  gap: 0.55rem;
   text-align: center;
+  white-space: nowrap;
 }
 
 .footer a {
@@ -234,6 +236,11 @@
   }
 
   .footer {
-    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .footer a {
+    font-size: 0.75rem;
   }
 }
