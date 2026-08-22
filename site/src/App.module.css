@@ -56,13 +56,12 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: var(--card);
+  background: transparent;
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  backdrop-filter: blur(8px);
   transition: border-color 0.18s, transform 0.18s;
 }
 
@@ -91,6 +90,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  background: var(--card-text-bg);
 }
 
 .cardCategory {
