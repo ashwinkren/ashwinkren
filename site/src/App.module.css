@@ -122,7 +122,8 @@
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   gap: 0.5rem 0.65rem;
@@ -230,5 +231,9 @@
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-wrap: wrap;
   }
 }
