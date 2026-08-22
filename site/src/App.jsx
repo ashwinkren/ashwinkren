@@ -64,32 +64,36 @@ function ProjectCard({ project }) {
 
 function Portfolio() {
   return (
-    <main className={styles.page}>
-      <header className={styles.header}>
+    <>
+      <header className={styles.topBar}>
         <h1 className={styles.title}>Ashwin Rengarajan's Projects</h1>
         <p className={styles.subtitle}>
           Nueva 26&apos; and USC &apos;30: Behavioral Economics and Entrepreneurship
         </p>
       </header>
-      <div className={styles.grid}>
-        {PROJECTS.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </div>
-      <footer className={styles.footer}>
-        <a
-          href="https://www.linkedin.com/in/ashwin-rengarajan-8551402b5"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          linkedin
-        </a>
-        <span className={styles.footerSep}>|</span>
-        <a href="mailto:ashwinkren@gmail.com">ashwinkren@gmail.com</a>
-        <span className={styles.footerSep}>|</span>
-        <a href="tel:+16505337880">6505337880</a>
-      </footer>
-    </main>
+
+      <main className={styles.page}>
+        <div className={styles.grid}>
+          {PROJECTS.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </div>
+
+        <footer className={styles.footer}>
+          <a
+            href="https://www.linkedin.com/in/ashwin-rengarajan-8551402b5"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            linkedin
+          </a>
+          <span className={styles.footerSep}>|</span>
+          <a href="mailto:ashwinkren@gmail.com">ashwinkren@gmail.com</a>
+          <span className={styles.footerSep}>|</span>
+          <a href="tel:+16505337880">6505337880</a>
+        </footer>
+      </main>
+    </>
   );
 }
 
