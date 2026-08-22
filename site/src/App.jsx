@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { PROJECTS } from "./data/projects";
 import { hashPassword, isAuthed, setAuthed, PASSWORD_HASH } from "./lib/auth";
+import Starfield from "./Starfield";
 import styles from "./App.module.css";
 
 function Login({ onSuccess }) {
@@ -81,9 +82,11 @@ function Portfolio() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          www.linkedin.com/in/ashwin-rengarajan-8551402b5
+          linkedin
         </a>
+        <span className={styles.footerSep}>|</span>
         <a href="mailto:ashwinkren@gmail.com">ashwinkren@gmail.com</a>
+        <span className={styles.footerSep}>|</span>
         <a href="tel:+16505337880">6505337880</a>
       </footer>
     </main>
@@ -97,6 +100,10 @@ export default function App() {
     setAuthedState(isAuthed());
   }, []);
 
-  if (!authed) return <Login onSuccess={() => setAuthedState(true)} />;
-  return <Portfolio />;
+  return (
+    <>
+      <Starfield />
+      {!authed ? <Login onSuccess={() => setAuthedState(true)} /> : <Portfolio />}
+    </>
+  );
 }

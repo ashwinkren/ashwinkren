@@ -1,0 +1,22 @@
+.wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #030303;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  height: 200vh;
+  will-change: transform;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
