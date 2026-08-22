@@ -10,13 +10,48 @@
 .layer {
   position: absolute;
   inset: 0;
-  height: 200vh;
+  height: 300vh;
   will-change: transform;
 }
 
-.star {
+.star,
+.starBright {
   position: absolute;
   border-radius: 50%;
   background: #fff;
   transform: translate(-50%, -50%);
+}
+
+.star {
+  box-shadow:
+    0 0 1px 0.5px rgba(255, 255, 255, 0.7),
+    0 0 5px 1.5px rgba(255, 255, 255, 0.15);
+}
+
+.starBright {
+  box-shadow:
+    0 0 2px 1px rgba(255, 255, 255, 0.95),
+    0 0 7px 2px rgba(220, 230, 255, 0.4),
+    0 0 14px 4px rgba(200, 210, 255, 0.15);
+}
+
+.starBright::before,
+.starBright::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+}
+
+.starBright::before {
+  width: 7px;
+  height: 1px;
+}
+
+.starBright::after {
+  width: 1px;
+  height: 7px;
 }
