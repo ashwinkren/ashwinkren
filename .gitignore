@@ -4,3 +4,5 @@ site/node_modules/
 data/*.json
 !.gitkeep
 .DS_Store
+.tools/
+.project-images.zip

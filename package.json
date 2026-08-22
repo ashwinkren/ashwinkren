@@ -1,15 +1,10 @@
 {
   "name": "ashwinkren",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:site\"",
-    "dev:site": "npm run dev --prefix site",
-    "dev:server": "node server/index.js",
+    "dev": "npm run dev --prefix site",
     "build": "npm run build --prefix site",
-    "start": "node server/index.js"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
+    "preview": "npm run preview --prefix site"
   }
 }

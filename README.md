@@ -1,45 +1,25 @@
 # ashwinkren.com
 
-Personal site with **ScrollMap** — live consumption analytics powered by the Reel Mirror Chrome extension.
+Password-protected portfolio — one page, 8 projects in a 2×4 grid.
 
-## Quick start
+## Access
+
+1. Go to **https://ashwinkren.com**
+2. Password: **`shwinter`**
+
+## Local dev
 
 ```bash
-npm install
-cd site && npm install && cd ..
+cd ~/Projects/ashwinkren
+npm install --prefix site
 npm run dev
 ```
 
-- Site: http://localhost:5173
-- ScrollMap: http://localhost:5173/scrollmap
-- Sync API: http://localhost:8787/api/sync/:syncId
-
-## Features
-
-- **Overview** — reels, watch time, satisfaction, category breakdown
-- **Consumption** — compulsion vs intention, brainrot share, recent reels
-- **Focus** — Pomodoro timer with pre-scroll difficulty suggestions
-- **Recommendations** — satisfaction-aligned, not engagement-maximized
-- **Wellness** — weekly digital wellness score + mood logging
-- **Parenting** — anonymous category mix and behavioral alerts
-- **Creator Research** — panel satisfaction signals for creators
-
-## Live sync
-
-1. Open ScrollMap and copy your **Sync ID**
-2. In Reel Mirror extension popup, paste the Sync ID and click **Sync to ScrollMap**
-3. Dashboard polls every 15s for updates
-
-Or import a JSON export from the extension manually.
+Open http://localhost:5173
 
 ## Deploy
 
-Build the site and deploy `site/dist` to Vercel/Netlify for `ashwinkren.com`. Run the sync server on Railway/Fly.io and set `VITE_API_URL` or proxy `/api` to your server.
+Vercel root directory: **`site`**. Push to `main` on GitHub to auto-deploy.
 
-```bash
-npm run build
-```
-
-## Domain
-
-Point `ashwinkren.com` DNS to your static host. For API sync in production, deploy `server/` separately and configure reverse proxy on `/api/*`.
+Privacy policy (Smart Scroll Chrome Store only):  
+https://ashwinkren.com/privacy-policy.html
