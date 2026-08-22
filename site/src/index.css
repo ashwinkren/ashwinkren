@@ -1,14 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap");
 
 :root {
-  --bg: #09090b;
-  --card: #111114;
-  --text: #f4f4f5;
-  --muted: #71717a;
-  --line: #27272a;
-  --line-hover: #3f3f46;
-  --accent: #a1a1aa;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --bg: #050508;
+  --card: rgba(12, 12, 18, 0.72);
+  --text: #f0f0f3;
+  --muted: #8b8b96;
+  --line: rgba(255, 255, 255, 0.08);
+  --font-display: "Cormorant Garamond", Georgia, serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
@@ -28,12 +26,48 @@ body {
   font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(30, 35, 60, 0.35), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85% 90%, rgba(20, 25, 45, 0.2), transparent 50%),
+    linear-gradient(180deg, #050508 0%, #080810 50%, #050508 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 120, 140, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(80, 80, 100, 0.08), transparent);
+    radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 28% 72%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 44% 34%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 61% 12%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 73% 58%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 86% 28%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 91% 82%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 8% 52%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1px 1px at 35% 88%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 52% 62%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 67% 41%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 19% 91%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1.5px 1.5px at 78% 67%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 96% 44%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 4% 38%, rgba(255, 255, 255, 0.2), transparent);
 }
 
 #root {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
 }
 
