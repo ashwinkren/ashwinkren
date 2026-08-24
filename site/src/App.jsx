@@ -28,7 +28,7 @@ function Login({ onSuccess }) {
       <form className={styles.gateCard} onSubmit={submit}>
         <p className={styles.gateEyebrow}>ashwinkren.com</p>
         <h1 className={styles.gateTitle}>Private portfolio</h1>
-        <p className={styles.gateHint}>Enter the password to continue.</p>
+        <p className={styles.gateHint}>Enter the password to continue or DM me to request.</p>
         <input
           type="password"
           className={styles.input}

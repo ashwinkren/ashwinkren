@@ -63,4 +63,12 @@ export const PROJECTS = [
     href: "https://colab.research.google.com/drive/1jwxla_5DPWUUI1jrVKKyjdnIfTFdyyhN?usp=sharing",
     image: "/thumbnails/soccer.png",
   },
+  {
+    id: "neurotech",
+    category: "Individual / Freelance",
+    title: "Neurotech Pres: Technical/Market Opportunity",
+    description: "Presentation on BCIs, neural interfaces, and neurotech market opportunity.",
+    href: "https://docs.google.com/presentation/d/1NUVLsu7KlLaKuPVYr7shAlBYgKT-7EIx5YVk3tQ1jW4/edit?usp=sharing",
+    image: "/thumbnails/neurotech.png",
+  },
 ];
