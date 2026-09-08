@@ -63,4 +63,12 @@ export const PROJECTS = [
     href: "https://docs.google.com/presentation/d/1NUVLsu7KlLaKuPVYr7shAlBYgKT-7EIx5YVk3tQ1jW4/edit?usp=sharing",
     image: "/thumbnails/neurotech.png",
   },
+  {
+    id: "pr-reactor-8",
+    category: "Individual / Freelance",
+    title: "PR-Reactor-8",
+    description: "Solar-powered floating reactor that uses Pestalotiopsis microspora to break down marine nanoplastics.",
+    href: "https://docs.google.com/presentation/d/1K2ARvrACZJycClU69igrcJ8qcDWNtuA-bq3-g5IkngA/edit?usp=sharing",
+    image: "/thumbnails/pr-reactor-8.png",
+  },
 ];
