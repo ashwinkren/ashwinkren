@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PROJECTS } from "./data/projects";
+import { PROJECTS, SECTIONS } from "./data/projects";
 import { hashPassword, isAuthed, setAuthed, PASSWORD_HASH } from "./lib/auth";
 import Starfield from "./Starfield";
 import styles from "./App.module.css";
@@ -63,6 +63,9 @@ function ProjectCard({ project }) {
 }
 
 function Portfolio() {
+  const [section, setSection] = useState(SECTIONS[0].id);
+  const visible = PROJECTS.filter((p) => p.section === section);
+
   return (
     <>
       <header className={styles.topBar}>
@@ -70,11 +73,28 @@ function Portfolio() {
         <p className={styles.subtitle}>
           Nueva 26&apos; and USC &apos;30: Behavioral Economics and Entrepreneurship
         </p>
+        <div className={styles.tabs} role="tablist" aria-label="Project sections">
+          {SECTIONS.map((s) => {
+            const active = section === s.id;
+            return (
+              <button
+                key={s.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                className={active ? `${styles.tab} ${styles.tabActive}` : styles.tab}
+                onClick={() => setSection(s.id)}
+              >
+                {s.label}
+              </button>
+            );
+          })}
+        </div>
       </header>
 
       <main className={styles.page}>
         <div className={styles.grid}>
-          {PROJECTS.map((p) => (
+          {visible.map((p) => (
             <ProjectCard key={p.id} project={p} />
           ))}
         </div>

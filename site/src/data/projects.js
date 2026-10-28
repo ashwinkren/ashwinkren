@@ -1,6 +1,12 @@
+export const SECTIONS = [
+  { id: "entrepreneurship", label: "Entrepreneurship" },
+  { id: "other", label: "Other" },
+];
+
 export const PROJECTS = [
   {
     id: "athlynk",
+    section: "entrepreneurship",
     category: "Organized / Group",
     title: "M&TSI: Athlynk",
     description: "Haptic headband and sideline app for live basketball player tracking. Built at M&TSI.",
@@ -9,6 +15,7 @@ export const PROJECTS = [
   },
   {
     id: "neurotech",
+    section: "entrepreneurship",
     category: "Individual / Freelance",
     title: "Neurotech Pres: Technical/Market Opportunity",
     description: "Presentation on BCIs, neural interfaces, and neurotech market opportunity.",
@@ -16,7 +23,35 @@ export const PROJECTS = [
     image: "/thumbnails/neurotech.png",
   },
   {
+    id: "smartscroll",
+    section: "entrepreneurship",
+    category: "Individual / Freelance",
+    title: "Smart Scroll",
+    description: "Chrome extension that tracks Reels watch time and satisfaction on your device.",
+    href: "https://docs.google.com/document/d/1M-vKoX8aPAJxF5sz2klZdcChGQ8kP8TrhlsvrOikEv0/edit?tab=t.0",
+    image: "/thumbnails/smartscroll.png",
+  },
+  {
+    id: "cleantech",
+    section: "entrepreneurship",
+    category: "Individual / Freelance",
+    title: "Designing Scoring Templates for Cleantech Companies",
+    description: "Rubrics and scoring sheets for judging early-stage cleantech startups.",
+    href: "https://docs.google.com/spreadsheets/d/1KSpCOEoj2uYnqIPPK46J9VWWAYErtmo0cAoyIU9e9Fw/edit?usp=sharing",
+    image: "/thumbnails/cleantech.png",
+  },
+  {
+    id: "pr-reactor-8",
+    section: "entrepreneurship",
+    category: "Individual / Freelance",
+    title: "PR-Reactor-8",
+    description: "Solar-powered floating reactor that uses Pestalotiopsis microspora to break down marine nanoplastics.",
+    href: "https://docs.google.com/presentation/d/1K2ARvrACZJycClU69igrcJ8qcDWNtuA-bq3-g5IkngA/edit?usp=sharing",
+    image: "/thumbnails/pr-reactor-8.png",
+  },
+  {
     id: "usc",
+    section: "other",
     category: "Individual / Freelance",
     title: "USC Course Flowchart",
     description: "Four-year planner for USC majors, minors, and GEs.",
@@ -25,6 +60,7 @@ export const PROJECTS = [
   },
   {
     id: "elo",
+    section: "other",
     category: "Organized / Group",
     title: "Wharton Data Science ELO",
     description: "Elo model for NCAA basketball win probability. Wharton Data Science semifinalist.",
@@ -32,15 +68,8 @@ export const PROJECTS = [
     image: "/thumbnails/elo.png",
   },
   {
-    id: "cleantech",
-    category: "Individual / Freelance",
-    title: "Designing Scoring Templates for Cleantech Companies",
-    description: "Rubrics and scoring sheets for judging early-stage cleantech startups.",
-    href: "https://docs.google.com/spreadsheets/d/1KSpCOEoj2uYnqIPPK46J9VWWAYErtmo0cAoyIU9e9Fw/edit?usp=sharing",
-    image: "/thumbnails/cleantech.png",
-  },
-  {
     id: "rhna",
+    section: "other",
     category: "Individual / Freelance",
     title: "RHNA Housing Project",
     description: "Fixed-effects and DiD analysis of California housing permits under RHNA.",
@@ -49,26 +78,11 @@ export const PROJECTS = [
   },
   {
     id: "soccer",
+    section: "other",
     category: "Individual / Freelance",
     title: "Soccer Player Clustering",
     description: "k-means on player stats with PCA — grouped similar profiles in Colab.",
     href: "https://colab.research.google.com/drive/1jwxla_5DPWUUI1jrVKKyjdnIfTFdyyhN?usp=sharing",
     image: "/thumbnails/soccer.png",
-  },
-  {
-    id: "smartscroll",
-    category: "Individual / Freelance",
-    title: "Smart Scroll",
-    description: "Chrome extension that tracks Reels watch time and satisfaction on your device.",
-    href: "https://docs.google.com/document/d/1M-vKoX8aPAJxF5sz2klZdcChGQ8kP8TrhlsvrOikEv0/edit?tab=t.0",
-    image: "/thumbnails/smartscroll.png",
-  },
-  {
-    id: "pr-reactor-8",
-    category: "Individual / Freelance",
-    title: "PR-Reactor-8",
-    description: "Solar-powered floating reactor that uses Pestalotiopsis microspora to break down marine nanoplastics.",
-    href: "https://docs.google.com/presentation/d/1K2ARvrACZJycClU69igrcJ8qcDWNtuA-bq3-g5IkngA/edit?usp=sharing",
-    image: "/thumbnails/pr-reactor-8.png",
   },
 ];
