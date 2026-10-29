@@ -1,5 +1,5 @@
 // SHA-256 of site password (client gate — keeps casual visitors out)
-export const PASSWORD_HASH = "bddabfaae15f3a2939f35ee9b7df44a1ca11c2ead8e5445ee5dc731c9c4af3ae";
+export const PASSWORD_HASH = "30c5461fc27b84f1f1ad0a83162a26882b22d11cdfa45978dd21c810056e8d0e";
 
 export async function hashPassword(value) {
   const data = new TextEncoder().encode(value);

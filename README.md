@@ -5,7 +5,7 @@ Password-protected portfolio — one page, 8 projects in a 2×4 grid.
 ## Access
 
 1. Go to **https://ashwinkren.com**
-2. Password: **`shwinter`**
+2. Password: **`winter`**
 
 ## Local dev
 
