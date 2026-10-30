@@ -70,9 +70,6 @@ function Portfolio() {
     <>
       <header className={styles.topBar}>
         <h1 className={styles.title}>Ashwin Rengarajan's Projects</h1>
-        <p className={styles.subtitle}>
-          Nueva 26&apos; and USC &apos;30: Behavioral Economics and Entrepreneurship
-        </p>
         <div className={styles.tabs} role="tablist" aria-label="Project sections">
           {SECTIONS.map((s) => {
             const active = section === s.id;

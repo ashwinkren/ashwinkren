@@ -1,7 +1,7 @@
 .page {
   max-width: 1012px;
   margin: 0 auto;
-  padding: 9.75rem 1.25rem 5rem;
+  padding: 8.15rem 1.25rem 5rem;
   animation: fadeIn 0.45s ease;
 }
 
@@ -35,15 +35,7 @@
   letter-spacing: -0.01em;
   line-height: 1.15;
   color: var(--text);
-  margin: 0 0 0.45rem;
-}
-
-.subtitle {
   margin: 0 0 0.95rem;
-  font-size: 0.86rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: var(--muted);
 }
 
 .tabs {
@@ -269,7 +261,7 @@
 
 @media (max-width: 640px) {
   .page {
-    padding-top: 10.75rem;
+    padding-top: 9.15rem;
   }
 
   .topBar {
