@@ -68,6 +68,15 @@ export const PROJECTS = [
     image: "/thumbnails/rhna.png",
   },
   {
+    id: "protosynth",
+    section: "in-progress",
+    category: "Organized / Group",
+    title: "Protosynth",
+    description: "Protein design pipeline — residue masking, sequence generation, structure folding.",
+    href: "https://docs.google.com/presentation/d/1YGaFcssAae8KSjsDh7Wj9gsG219MgjeNk8wTQKi0zgg/edit?usp=sharing",
+    image: "/thumbnails/protosynth.png",
+  },
+  {
     id: "soccer",
     section: "in-progress",
     category: "Individual / Freelance",
