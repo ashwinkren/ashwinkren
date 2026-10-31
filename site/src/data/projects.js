@@ -1,6 +1,6 @@
 export const SECTIONS = [
   { id: "main", label: "Main" },
-  { id: "side", label: "Side" },
+  { id: "in-progress", label: "In-progress" },
 ];
 
 export const PROJECTS = [
@@ -60,7 +60,7 @@ export const PROJECTS = [
   },
   {
     id: "rhna",
-    section: "side",
+    section: "in-progress",
     category: "Individual / Freelance",
     title: "RHNA Housing Project",
     description: "Fixed-effects and DiD analysis of California housing permits under RHNA.",
@@ -69,7 +69,7 @@ export const PROJECTS = [
   },
   {
     id: "soccer",
-    section: "side",
+    section: "in-progress",
     category: "Individual / Freelance",
     title: "Soccer Player Clustering",
     description: "k-means on player stats with PCA — grouped similar profiles in Colab.",
@@ -78,11 +78,20 @@ export const PROJECTS = [
   },
   {
     id: "smartscroll",
-    section: "side",
+    section: "in-progress",
     category: "Individual / Freelance",
     title: "Smart Scroll",
     description: "Chrome extension that tracks Reels watch time and satisfaction on your device.",
     href: "https://docs.google.com/spreadsheets/d/1WQJGFlYY0B0mYorfo97snyDFK1fnNajbo5bC-ENpeeg/edit?usp=sharing",
     image: "/thumbnails/smartscroll.png",
+  },
+  {
+    id: "eeg-lie-truth",
+    section: "in-progress",
+    category: "Individual / Freelance",
+    title: "EEG Lie vs Truth Classifier",
+    description: "Logistic regression on scalp EEG features — theta-power weights mapped to lie vs truth.",
+    href: "https://drive.google.com/file/d/1xa3vjuPIQc4yYH_w-cVGaRh8yaAKAIAr/view?usp=sharing",
+    image: "/thumbnails/eeg-lie-truth.png",
   },
 ];
