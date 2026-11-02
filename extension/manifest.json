@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Top 40% Hand",
+  "version": "1.0.0",
+  "description": "A 3-second corner note when your Poker Now hole cards are a top 40% starting hand. Nothing else.",
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://pokernow.com/games/*",
+        "https://www.pokernow.com/games/*",
+        "https://*.pokernow.com/games/*",
+        "https://pokernow.club/games/*",
+        "https://www.pokernow.club/games/*",
+        "https://*.pokernow.club/games/*"
+      ],
+      "js": ["content.js"],
+      "type": "module",
+      "run_at": "document_idle"
+    }
+  ]
+}

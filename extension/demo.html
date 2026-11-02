@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Top 40% hand</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #1a1d21;
+        color: #eee;
+        font: 15px/1.4 "Segoe UI", system-ui, sans-serif;
+      }
+      .felt {
+        margin: 48px auto;
+        width: min(860px, calc(100% - 48px));
+        height: 420px;
+        border-radius: 220px;
+        background: radial-gradient(circle at 50% 45%, #1f8f4e, #0c6b38 70%);
+        box-shadow: inset 0 0 0 10px #0a3d22, 0 20px 50px rgba(0,0,0,.35);
+        position: relative;
+      }
+      .table-player-cards {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+      .you {
+        position: absolute;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+      }
+      .card, .back {
+        width: 54px;
+        height: 74px;
+        border-radius: 6px;
+        background: white;
+        color: #111;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+      .card.red { color: #c0392b; }
+      .card .r { font-size: 22px; }
+      .back {
+        background: #c23b45;
+        color: transparent;
+      }
+      .bar {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 8px 16px 24px;
+      }
+      button {
+        background: #2a2e33;
+        color: #f3f0e6;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      #result { text-align: center; min-height: 1.4em; color: #b7d7c4; }
+    </style>
+  </head>
+  <body>
+    <div class="felt">
+      <div class="table-player" id="villain">
+        <div class="table-player-cards"></div>
+      </div>
+      <div class="table-player you-player" id="hero">
+        <div class="table-player-cards" id="hero-cards"></div>
+        <div class="you" id="mirror"></div>
+      </div>
+    </div>
+    <div class="bar">
+      <button id="deal-aks" type="button">Deal A♠K♠</button>
+      <button id="deal-76s" type="button">Deal 7♥6♥</button>
+      <button id="deal-22" type="button">Deal 2♣2♦</button>
+      <button id="deal-74o" type="button">Deal 7♥4♠</button>
+      <button id="deal-72o" type="button">Deal 7♣2♦</button>
+      <button id="deal-backs" type="button">Card backs</button>
+      <button id="clear" type="button">Clear</button>
+    </div>
+    <p id="result"></p>
+    <script type="module">
+      import { startWatcher } from "./watch.js";
+
+      const params = new URLSearchParams(location.search);
+      const zone = document.querySelector("#hero-cards");
+      const mirror = document.querySelector("#mirror");
+      const villain = document.querySelector("#villain .table-player-cards");
+
+      const SUIT = { s: ["♠", ""], h: ["♥", "red"], d: ["♦", "red"], c: ["♣", ""] };
+
+      function card(rank, suit) {
+        const container = document.createElement("div");
+        container.className = `card-container card-s-${rank}`;
+        const face = document.createElement("div");
+        face.className = `card card-${suit}`;
+        const value = document.createElement("span");
+        value.className = "value";
+        value.textContent = rank === "T" ? "10" : rank;
+        const suitEl = document.createElement("span");
+        suitEl.className = "suit";
+        suitEl.textContent = SUIT[suit][0];
+        face.append(value, suitEl);
+        container.appendChild(face);
+        return container;
+      }
+
+      function paint(cards) {
+        zone.replaceChildren(...cards.map(([rank, suit]) => card(rank, suit)));
+        mirror.replaceChildren();
+        for (const [rank, suit] of cards) {
+          const el = document.createElement("div");
+          const [symbol, tone] = SUIT[suit];
+          el.className = `card ${tone}`;
+          el.innerHTML = `<div class="r">${rank === "T" ? "10" : rank}</div><div>${symbol}</div>`;
+          mirror.appendChild(el);
+        }
+      }
+
+      function backs() {
+        zone.replaceChildren();
+        for (let i = 0; i < 2; i += 1) {
+          const container = document.createElement("div");
+          container.className = "card-container";
+          const face = document.createElement("div");
+          face.className = "card back";
+          face.textContent = "POKER NOW";
+          container.appendChild(face);
+          zone.appendChild(container);
+        }
+        mirror.replaceChildren();
+        for (let i = 0; i < 2; i += 1) {
+          const el = document.createElement("div");
+          el.className = "back";
+          mirror.appendChild(el);
+        }
+      }
+
+      function clearCards() {
+        zone.replaceChildren();
+        mirror.replaceChildren();
+        villain.replaceChildren();
+      }
+
+      document.querySelector("#deal-aks").onclick = () => paint([["A", "s"], ["K", "s"]]);
+      document.querySelector("#deal-76s").onclick = () => paint([["7", "h"], ["6", "h"]]);
+      document.querySelector("#deal-22").onclick = () => paint([["2", "c"], ["2", "d"]]);
+      document.querySelector("#deal-74o").onclick = () => paint([["7", "h"], ["4", "s"]]);
+      document.querySelector("#deal-72o").onclick = () => paint([["7", "c"], ["2", "d"]]);
+      document.querySelector("#deal-backs").onclick = () => backs();
+      document.querySelector("#clear").onclick = () => clearCards();
+
+      startWatcher(document, { freeze: params.get("freeze") === "1" });
+
+      if (params.get("shot") === "aks") paint([["A", "s"], ["K", "s"]]);
+
+      const result = document.querySelector("#result");
+      function toastOn() {
+        const host = document.querySelector("#top40-hand-toast");
+        const toast = host?.shadowRoot?.querySelector(".toast");
+        return Boolean(toast && toast.classList.contains("on"));
+      }
+      function fail(message) {
+        result.dataset.state = "fail";
+        result.textContent = message;
+        throw new Error(message);
+      }
+
+      window.addEventListener("unhandledrejection", (event) => {
+        result.dataset.state = "fail";
+        result.textContent = String(event.reason && event.reason.message || event.reason);
+      });
+
+      if (params.get("selftest") === "1") {
+        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+        const quiet = async (label) => {
+          await sleep(120);
+          if (toastOn()) fail(`${label} should stay quiet`);
+        };
+        const shown = async (label) => {
+          await sleep(120);
+          if (!toastOn()) fail(`${label} should toast`);
+        };
+
+        paint([["7", "h"], ["4", "s"]]);
+        await quiet("7h4s");
+
+        paint([["A", "s"], ["K", "s"]]);
+        await shown("AKs");
+        const host = document.querySelector("#top40-hand-toast");
+        const toast = host.shadowRoot.querySelector(".toast");
+        const label = toast.querySelector(".label").textContent;
+        if (label !== "top 40%") fail(`label was ${label}`);
+        const box = toast.getBoundingClientRect();
+        const rightGap = window.innerWidth - box.right;
+        if (box.top > 24 || rightGap < 4 || rightGap > 28 || box.left < window.innerWidth / 2) {
+          fail(`toast not in the top right (top ${box.top}, right gap ${rightGap}, left ${box.left})`);
+        }
+        zone.classList.add("touched");
+        await sleep(50);
+        if (document.querySelectorAll("#top40-hand-toast").length !== 1) fail("toast repeated");
+
+        await sleep(1000);
+        if (!toastOn()) fail("toast disappeared before a second had passed");
+        await sleep(2300);
+        if (document.querySelector("#top40-hand-toast")) fail("toast lasted longer than 3 seconds");
+
+        paint([["7", "c"], ["2", "d"]]);
+        villain.replaceChildren(card("A", "h"), card("A", "d"));
+        await quiet("7c2d with a villain holding aces");
+
+        clearCards();
+        await sleep(800);
+        paint([["7", "h"], ["6", "h"]]);
+        await shown("76s");
+        await sleep(3200);
+        if (document.querySelector("#top40-hand-toast")) fail("second toast lasted longer than 3 seconds");
+
+        clearCards();
+        await sleep(800);
+        backs();
+        await quiet("card backs");
+
+        zone.classList.add("hide");
+        paint([["A", "h"], ["A", "d"]]);
+        await quiet("hidden aces");
+
+        result.dataset.state = "pass";
+        result.textContent = "PASS";
+      }
+    </script>
+  </body>
+</html>
