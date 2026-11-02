@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Top 40% Hand",
+  "version": "1.1.0",
+  "description": "A 3-second notice when your Poker Now hole cards are a top 40% starting hand, even if that tab is in the background.",
+  "permissions": ["notifications"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://pokernow.com/*",
+        "https://www.pokernow.com/*",
+        "https://*.pokernow.com/*",
+        "https://pokernow.club/*",
+        "https://www.pokernow.club/*",
+        "https://*.pokernow.club/*"
+      ],
+      "js": ["content.js"],
+      "type": "module",
+      "run_at": "document_idle"
+    }
+  ]
+}
