@@ -183,6 +183,21 @@ export function startWatcher(doc, options = {}) {
     if (key === lastKey) return;
     lastKey = key;
     if (!isTop40(handClass(cards[0], cards[1]))) return;
+    alertHand(cards, key);
+  }
+
+  function alertHand(cards, key) {
+    const text = cards.map((card) => `${rankLabel(card.rank)}${SUIT_SYMBOL[card.suit]}`).join(" ");
+    const runtime = globalThis.chrome?.runtime;
+    if (runtime?.id && runtime.sendMessage) {
+      const sent = runtime.sendMessage({ type: "top40", text, handKey: key });
+      if (sent && typeof sent.then === "function") {
+        sent.then((response) => {
+          if (!response?.ok) showToast(cards);
+        }).catch(() => showToast(cards));
+      }
+      return;
+    }
     showToast(cards);
   }
 
@@ -201,11 +216,14 @@ export function startWatcher(doc, options = {}) {
     attributes: true,
     attributeFilter: ["class", "hidden"],
   });
+  // Backup for a background tab whose observer delivery is delayed.
+  const poll = view.setInterval(safeEvaluate, 400);
   safeEvaluate();
 
   return {
     stop() {
       observer.disconnect();
+      view.clearInterval(poll);
       if (absentTimer) clearTimer(absentTimer);
       removeToast();
     },

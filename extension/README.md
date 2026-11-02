@@ -1,8 +1,6 @@
 # Top 40% Hand
 
-A Chrome extension for [Poker Now](https://www.pokernow.com). When you are dealt a starting hand in the top 40% of hands, a small note appears in the top-right corner and goes away after 3 seconds.
-
-Weaker hands stay quiet. There is no sound, no badge, and no Chrome notification.
+A Chrome extension for [Poker Now](https://www.pokernow.com). When you are dealt a starting hand in the top 40% of hands, Chrome shows a notification and removes it after 3 seconds. The Poker Now tab can stay in the background. Weaker hands stay quiet.
 
 ## Install
 
@@ -10,7 +8,7 @@ Weaker hands stay quiet. There is no sound, no badge, and no Chrome notification
 2. Turn on **Developer mode**
 3. Click **Load unpacked** and choose this folder
 
-Sit down at a Poker Now table. The note only reads the two cards already face-up in your own seat. Open `demo.html` to preview it.
+Sit down at a Poker Now table. Leave that tab open and switch away. The extension only reads the two cards already face-up in your own seat. The first alert asks macOS to allow notifications from Chrome. Open `demo.html` to preview the on-page note.
 
 ## What counts
 

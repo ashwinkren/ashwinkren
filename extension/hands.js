@@ -91,9 +91,7 @@ export function parseCardSpec(className, text) {
   const classes = String(className || "")
     .split(/\s+/)
     .filter(Boolean);
-  if (classes.some((cls) => /^(back|card-back|facedown|face-down)$/i.test(cls))) {
-    return null;
-  }
+  const faceDown = classes.some((cls) => /^(back|card-back|facedown|face-down)$/i.test(cls));
 
   let rank = null;
   let suit = null;
@@ -122,6 +120,9 @@ export function parseCardSpec(className, text) {
     }
   }
 
+  // A flipper has a face-down back in the same container as the face-up card.
+  // That back must not hide a card that already has a rank.
+  if (faceDown && !rank) return null;
   if (!rank || !suit) return null;
   return { rank, suit };
 }
@@ -135,23 +136,27 @@ function classString(node) {
 }
 
 export function readCardNode(node) {
-  const parts = [node, ...node.querySelectorAll("*")];
-  const classes = parts.map(classString).join(" ");
-  const valueNode = node.querySelector(".value, .rank, .card-value");
-  const suitNode = node.querySelector(".suit, .card-suit");
+  const front = node.querySelector?.(".card:not(.back)") || node;
+  const classes = [classString(node), classString(front)].join(" ");
+  const valueNode = front.querySelector?.(".value, .rank, .card-value")
+    || node.querySelector?.(".value, .rank, .card-value");
+  const suitNodes = front.querySelectorAll
+    ? [...front.querySelectorAll(".suit, .card-suit")]
+    : [];
+  const suitNode = [...suitNodes].reverse().find((el) => (el.textContent || "").trim()) || null;
   const text = valueNode || suitNode
     ? `${valueNode ? valueNode.textContent : ""}${suitNode ? suitNode.textContent : ""}`
-    : node.textContent || "";
+    : (front.textContent || "");
   return parseCardSpec(classes, text);
 }
 
 // Only the seated player's own hole cards. Other seats are ignored even if
 // their cards are present in the page.
 export function readHeroCards(root) {
-  const hero = root.querySelector(".you-player");
+  const hero = root.querySelector(".table-player.you-player") || root.querySelector(".you-player");
   if (!hero) return null;
-  const zone = hero.querySelector(".table-player-cards");
-  if (!zone || zone.classList.contains("hide") || zone.hasAttribute("hidden")) {
+  const zone = hero.querySelector(".table-player-cards") || hero;
+  if (zone !== hero && (zone.classList.contains("hide") || zone.hasAttribute("hidden"))) {
     return null;
   }
 

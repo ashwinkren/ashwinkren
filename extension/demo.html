@@ -105,6 +105,8 @@
       function card(rank, suit) {
         const container = document.createElement("div");
         container.className = `card-container card-s-${rank}`;
+        const flipper = document.createElement("div");
+        flipper.className = "card-flipper";
         const face = document.createElement("div");
         face.className = `card card-${suit}`;
         const value = document.createElement("span");
@@ -114,7 +116,11 @@
         suitEl.className = "suit";
         suitEl.textContent = SUIT[suit][0];
         face.append(value, suitEl);
-        container.appendChild(face);
+        const back = document.createElement("div");
+        back.className = "card back";
+        back.textContent = "POKER NOW";
+        flipper.append(face, back);
+        container.appendChild(flipper);
         return container;
       }
 

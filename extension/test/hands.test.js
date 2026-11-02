@@ -33,6 +33,10 @@ test("screenshot hand 7h4s is not a top 40% hand, and clear opens are", () => {
   assert.equal(isTop40("A7o"), false);
   assert.equal(isTop40("A2o"), false);
   assert.equal(isTop40("32o"), false);
+  assert.equal(handClass(card("6", "h"), card("9", "s")), "96o");
+  assert.equal(isTop40("96o"), false);
+  assert.equal(handClass(card("K", "s"), card("2", "d")), "K2o");
+  assert.equal(isTop40("K2o"), false);
 
   assert.equal(handClass(card("A", "s"), card("K", "s")), "AKs");
   assert.equal(handClass(card("K", "h"), card("A", "h")), "AKs");
@@ -62,6 +66,10 @@ test("card markup from Poker Now parses rank and suit", () => {
   assert.deepEqual(parseCardSpec("card card-d", "Q♦"), { rank: "Q", suit: "d" });
   assert.deepEqual(parseCardSpec("", "As"), { rank: "A", suit: "s" });
   assert.deepEqual(parseCardSpec("", "10d"), { rank: "T", suit: "d" });
+  assert.deepEqual(parseCardSpec("card-container card-s-A card card-h card back", "A♥"), {
+    rank: "A",
+    suit: "h",
+  });
   assert.equal(parseCardSpec("card back", "POKER NOW"), null);
   assert.equal(parseCardSpec("card card-back", ""), null);
   assert.equal(parseCardSpec("card", ""), null);
